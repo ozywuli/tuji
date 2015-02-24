@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+<!--
+__  __
+/  \  / \ /
+\__/ /_  |
+
+********************************
+Theme by: ozywuli.com
+Name:
+Version: 1.0
+Year: 2014
+
+********************************
+
+-->
+
+<html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}">
+
+
+
+
+<head>
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
+
+
+<!-- Fav Icons -->
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="apple-touch-icon" href="{PortraitURL-128}">
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+<!-- Theme Options -->
+{block:Hidden}
+
+<meta name="if:Twitter Feed" content="0">
+<meta name="if:Google Analytics" content="0">
+<meta name="text:Google Analytics ID" content="">
+{/block:Hidden}
+
+
+<!-- Normalize.css -->
+<link rel="stylesheet" href="http://static.tumblr.com/mmpnuei/fbtnk35d9/normalize.css">
+
+
+<!-- Reset -->
+<style>
+*,
+*:before,
+*:after {
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+
+body {
+font-size: 62.5%;
+font-style: normal;
+font-weight: normal;
+height: 100%;
+line-height: 1.5;
+position: relative;
+cursor: default;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Utilities */
+.clearfix:before,
+.clearfix:after {
+content: " ";
+display: table;
+}
+.clearfix:after {
+clear: both;
+}
+.clearfix {
+*zoom: 1;
+}
+
+</style>
+
+<!-- Theme CSS -->
+<style>
+body {
+  background-color: {BackgroundColor};
+}
+a {
+  color: {AccentColor};
+}
+.page-header {
+background-color: #000;
+background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("http://static.tumblr.com/2a1a4fd95e6ec26e24196974d80996d0/v7diimu/Em7n2sttk/tumblr_static_mountain-crop.jpg");
+background-position: center center;
+  margin-bottom: 80px;
+  padding: 20px;
+/*  background-image: url('{HeaderImage}');*/
+  text-align: center;
+}
+.page-header__title {
+  font-size: 48px;
+}
+.page-header__link {
+  color: {TitleColor};
+  font-family: {TitleFont};
+  font-weight: {TitleFontWeight}
+}
+
+
+.toggle {
+  position: fixed;
+  top: 30px;
+  right: 10px;
+  display: block;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 100%;
+  padding: 12px;
+  z-index: 99999;
+}
+.bar {
+  display: block;
+  width: 20px;
+  height: 3px;
+  background: #FFF;
+  margin-bottom: 4px;
+  transition: transform 0.15s linear 0s;
+  transform-origin: 50% 50% 0px;
+}
+.bar:nth-child(2) {
+    transition: opacity 0.1s linear 0s;
+}
+.toggled .bar:nth-child(1) {
+    transform: rotate(45deg) translate3d(5px, 5px, 0px);
+}
+.toggled .bar:nth-child(2) {
+    opacity: 0;
+}
+.toggled .bar:nth-child(3) {
+    transform: rotate(-45deg) translate3d(5px, -5px, 0px);
+}
+.toggled {
+  background: none;
+}
+
+.bar:nth-child(3) {
+  margin-bottom: 0;
+}
+.toggled:hover .bar {
+  background: blue;
+}
+
+
+.nav-container {
+  display:none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+
+
+.blur {
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+}
+
+
+.posts {
+  max-width: 90%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+.post img {
+  max-width: 100%;
+}
+.photo {
+  text-align: center;
+}
+
+
+.index-post-meta {
+  font-size: 14px;
+}
+
+
+.index-post-meta-row__one {
+  text-align: center;
+}
+
+.index-post-meta a {
+  color: #888;
+}
+.index-post-meta__date {
+  display: inline-block;
+  margin-right: 15px;
+}
+.index-post-meta__notecount {
+  display: inline-block;
+}
+.floatleft {
+  float: left;
+}
+.floatright {
+  float: right;
+}
+.index-post-meta__date p {
+  margin: 0;
+}
+
+.pop {
+  float: right;
+}
+.share-menu {
+  display: none;
+}
+
+.main-nav {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.search-bar {
+  position: relative;
+}
+.search-bar input[type="text"] {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #888;
+  padding-bottom: 8px;
+  padding-left: 60px;
+  background: none;
+  color: #FFF;
+  font-size: 24px;
+  line-height: 1.6;
+}
+.search-bar input[type="submit"] {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  border: 0;
+  background: none;
+  color: rgb(255, 255, 255);
+  padding: 25px;
+  line-height: 0;
+}
+.search-bar svg {
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  pointer-events: none;
+}
+
+</style>
+
+<!-- Custom CSS -->
+<style>
+{CustomCSS}
+</style>
+
+
+</head>
+
+
+
+
+<body>
+
+
+<!-- Header = Avatar + Title + Description -->
+<header class="page-header">
+
+
+  <!-- Avatar -->
+  {block:ShowAvatar}
+  <img src="{PortraitURL-64}" alt="{Title}" class="page-header__avatar">
+  {/block:ShowAvatar}
+
+  <!-- Title -->
+  {block:ShowTitle}
+  <h1 class="page-header__title">
+  <a href="/" class="page-header__link">{Title}</a>
+  </h1>
+  {/block:ShowTitle}
+
+  <!-- Description -->
+  {block:ShowDescription}
+  <div class="page-header__description">{Description}</div>
+  {/block:ShowDescription}
+
+
+</header>
+
+
+
+<a href="#" class="toggle js-toggle">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</a>
+
+
+
+<!-- Navigation -->
+
+<div class="nav-container">
+
+  <nav class="main-nav">
+
+
+  <div class="clearfix main-nav__menu">
+    <a href="/archive">{lang:Archive}</a>
+    {block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
+    {block:HasPages}{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}{/block:HasPages}
+  </ul>
+
+
+  <form class="search-bar" action="/search" method="get">
+    <input type="text" placeholder="{lang:Search}" name="q" value="{SearchQuery}">
+    <input type="submit" value="">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       width="32px" height="32px" viewBox="0 0 612.01 612.01" enable-background="new 0 0 612.01 612.01" xml:space="preserve">
+    <g>
+      <g>
+        <g>
+          <path fill="#FFFFFF" d="M606.209,578.714L448.198,423.228C489.576,378.3,515,318.8,515,253.393C514.98,113.4,399.7,0,257.5,0
+            C115.282,0,0,113.4,0,253.393c0,139.993,115.276,253.4,257.5,253.393c61.444,0,117.801-21.253,162.068-56.586l158.624,156.099
+            c7.729,7.601,20.3,7.601,28,0c7.745-7.599,7.708-19.999,0.008-27.585H606.209z M257.493,467.8
+            c-120.326,0-217.869-95.993-217.869-214.407C39.624,134.979,137.167,39,257.5,38.986c120.327,0,217.9,96,217.9,214.4
+            c0,118.4-97.581,214.414-217.9,214.414H257.493z"/>
+        </g>
+      </g>
+    </g>
+</svg>
+  </form>
+
+
+  </nav>
+
+</div>
+
+<!-- Content = Search Page + Tag Page + Post Types -->
+<section class="page-content">
+
+
+  <!-- Search Page -->
+  {block:SearchPage}
+  <div class="result">
+  <p>{lang:Found SearchResultCount results for SearchQuery 2}</p>
+  {block:NoSearchResults}<p>{lang:No results for SearchQuery 2}</p>{/block:NoSearchResults}
+  </div>
+  {/block:SearchPage}
+
+
+  <!-- Tag Page -->
+  {block:TagPage}<div class="result"><p>{lang:TagResultCount posts tagged Tag 3}</p></div>{/block:TagPage}
+
+
+  <!-- Post Types -->
+  {block:Posts}
+  <article class="posts {TagsAsClasses} {block:NoteCount}{NoteCount} notecount {/block:NoteCount} {block:IndexPage}posts-masonry-hook{/block:IndexPage}" id="{PostID}">
+
+    <!-- Text -->
+    {block:Text}
+    <div class="text post">
+    {block:Title}<h3>{Title}</h3>{/block:Title}
+    {Body}
+    </div>
+
+      <!-- Permalink Meta -->
+      {block:PermalinkPage}
+      <ul class="hashtags">
+      {block:HasTags}
+         {block:Tags}
+              <li><a href="{TagURL}">#{Tag}</a></li>
+         {/block:Tags}
+      {/block:HasTags}
+      </ul>
+      {/block:PermalinkPage}
+
+
+    {/block:Text}
+
+
+    <!-- Quote -->
+    {block:Quote}
+    <div class="quote post">
+    <blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
+    {block:Source}<p class="source">&mdash; {Source}</p>{/block:Source}
+    </div>
+    {/block:Quote}
+
+
+    <!-- Link -->
+    {block:Link}
+    <div class="link post">
+    <h3><a href="{URL}" {Target}>{Name}</a></h3>
+    {block:Description}<div class="caption">{Description}</div>{/block:Description}
+    </div>
+    {/block:Link}
+
+
+    <!-- Video -->
+    {block:Video}
+    <div class="video post">
+    {Video-500}
+    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+    </div>
+    {/block:Video}
+
+
+    <!-- Audio -->
+    {block:Audio}
+    <div class="audio post">
+    {block:AlbumArt}<img src="{AlbumArtURL}" alt="">{/block:AlbumArt}
+    {AudioPlayerBlack}
+    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+    </div>
+    {/block:Audio}
+
+
+    <!-- Photo -->
+    {block:Photo}
+    <div class="photo post">
+    {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+    </div>
+    {/block:Photo}
+
+
+    <!-- Photoset -->
+    {block:Photoset}
+    <div class="photoset post">
+
+    {block:Photos}
+    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+    {/block:Photos}
+    </div>
+    {/block:Photoset}
+
+
+    <!-- Panorama -->
+    {block:Panorama}
+    <div class="panorama post">
+    {LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+    </div>
+    {/block:Panorama}
+
+
+    <!-- Chat -->
+    {block:Chat}
+    <div class="chat post">
+    {block:Title}<h3>{Title}</h3>{/block:Title}
+    <ul class="conversation">
+    {block:Lines}
+    <li class="line {Alt}">
+    {block:Label}<span class="person">{Label}</span>{/block:Label}
+    <span class="person-said">{Line}</span>
+    </li>
+    {/block:Lines}
+    </ul>
+    </div>
+    {/block:Chat}
+
+
+    <!-- Answer -->
+    {block:Answer}
+    <div class="answer post">
+    <img src="{AskerPortraitURL-40}">
+    {Asker}
+    {Question}
+    {Answer}
+    </div>
+    {/block:Answer}
+
+
+    <!-- Start Index Post Meta -->
+
+      <!-- Post Tags -->
+      {block:HasTags}
+      <div class="tags">
+      {block:Tags}
+      <a href="{TagURL}">#{Tag} </a>
+      {/block:Tags}
+      </div>
+      {/block:HasTags}
+
+
+
+
+
+      <!-- Date + Notecount -->
+      <div class="index-post-meta clearfix">
+
+        <div class="index-post-meta-row__one">
+          <a href="{Permalink}" class="index-post-meta__date">
+            {block:Date}
+              {block:NewDayDate}<p>{DayOfMonth} {Month} {Year}</p>{/block:NewDayDate}
+              {block:SameDayDate}<p>{DayOfMonth} {Month} {Year}</p>{/block:SameDayDate}
+            {/block:Date}
+          </a>
+          <div class="index-post-meta__notecount">
+            <span class="yes-notes">
+                <a href="{Permalink}">
+                {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+                </a>
+            </span>
+            <span class="no-notes">
+                <a href="{Permalink}">0 notes</a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- Index Meta -->
+
+
+
+
+      <!-- Share Controls -->
+
+      <div class="pop">
+          <a href="#" class="share selector icon-export"></a>
+          <nav class="share-menu" id="share_{PostID}">
+            <a href="#" class="share-item open-in-app" data-post="{PostID}">Open in app</a>
+            <a href="http://facebook.com/sharer.php?u={URLEncodedPermalink}&amp;t={URLEncodedTitle}" class="share-item facebook" target="_blank">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}" class="share-item twitter" target="_blank">Tweet</a>
+            <a href="mailto:?subject={URLEncodedShareString}&amp;body={URLEncodedMailSummary}" class="share-item mail">Mail</a>
+          </nav>
+      </div>
+
+
+
+    <!-- End Index Post Meta -->
+
+
+    <!-- Start Permalink Post Meta -->
+    {block:PermalinkPage}
+
+      <!-- Post Notes -->
+      {block:PostNotes}
+      <div class="note-container">{PostNotes}</div>
+      {/block:PostNotes}
+
+      <!-- Post Pagination -->
+      {block:PermalinkPagination}
+      <div class="post-pagination clearfix">
+      {block:PreviousPost}<a class="post-pagination__prev"href="{PreviousPost}">{lang:Previous post}</a>{/block:PreviousPost}
+      {block:NextPost}<a class="post-pagination__next" href="{NextPost}">{lang:Next post}</a>{/block:NextPost}
+      </div>
+      {/block:PermalinkPagination}
+
+    {/block:PermalinkPage}
+    <!-- End Permalink Post Meta -->
+
+
+  </article>
+  {/block:Posts}
+
+
+
+    <!-- Start Page Pagination -->
+    {block:Pagination}
+    <div class="page-pagination">
+    <ul>
+    {block:PreviousPage}<li><a class="page-pagination__prev" href="{PreviousPage}">{lang:Previous}</a></li>{/block:PreviousPage}
+
+    {block:JumpPagination length="5"}
+    {block:CurrentPage}<li><span class="page-pagination__current">{PageNumber}</span></li>{/block:CurrentPage}
+    {block:JumpPage}<li><a class="page-pagination__jump" href="{URL}">{PageNumber}</a></li>{/block:JumpPage}
+    {/block:JumpPagination}
+
+    {block:NextPage}<li><a class="page-pagination__next" href="{NextPage}">{lang:Next}</a></li>{/block:NextPage}
+    </ul>
+    </div>
+    {/block:Pagination}
+    <!-- End Page Pagination -->
+
+
+
+
+</section><!-- close content -->
+
+
+
+
+<!-- Scripts -->
+<script src="http://static.tumblr.com/fdpqc0a/mdNmz449b/jquery-2.0.3.min.js"></script>
+<script src="http://static.tumblr.com/fdpqc0a/YWGmz44aj/jquery.masonry.min.js"></script>
+<script src="http://static.tumblr.com/fdpqc0a/Fo6mz44b2/jquery.imagesloaded.min.js"></script>
+<script src="http://static.tumblr.com/fdpqc0a/BSnmz44c0/jquery.infinitescroll.min.js"></script>
+
+<!-- Custom Scripts -->
+<script type="text/javascript">
+    $(function() {
+
+        // var $container = $('.posts').css({
+        //     opacity: 0
+        // });
+        // $container.imagesLoaded(function() {
+        //     $container.animate({
+        //         opacity: 1
+        //     });
+        //     $container.masonry({
+        //         postelector: '.post',
+        //         columnWidth: 410
+        //     });
+        // });
+        // $container.infinitescroll({
+        //     navSelector: '.pagination',
+        //     nextSelector: '.pagination li a.pagination_nextlink',
+        //     postelector: '.load',
+        //     loading: {
+        //         img: 'http://static.tumblr.com/glziqhp/eRkls6pz6/white-90perc-opacity.png',
+        //         donetext: ''
+        //     }
+        // }, function(newElements) {
+        //     var $newElems = $(newElements).css({
+        //         opacity: 0
+        //     });
+        //     $newElems.imagesLoaded(function() {
+        //         $newElems.animate({
+        //             opacity: 1
+        //         });
+        //         $container.masonry('appended', $newElems, true);
+        //     });
+        // });
+
+
+
+        var $toggle = $('.js-toggle');
+        var $navContainer = $('.nav-container');
+        var $bars = $('.bar');
+        var $pageContent = $('.page-content');
+        var $pageHeader = $('.page-header');
+
+
+        $toggle.on('click', function(e) {
+          e.preventDefault();
+          if (!$navContainer.hasClass('revealed')) {
+            $toggle.addClass('toggled');
+            $navContainer.addClass('revealed').fadeIn();
+            $pageContent.addClass('blur');
+            $pageHeader.addClass('blur')
+
+
+          } else {
+            $toggle.removeClass('toggled');
+            $navContainer.removeClass('revealed').fadeOut();
+            $pageContent.removeClass('blur');
+            $pageHeader.removeClass('blur');
+          }
+        });
+
+
+    });
+</script>
+
+
+
+
+<!-- Theme Options -->
+{block:IfTwitterFeed}
+{block:Twitter}
+<script type="text/javascript">
+function recent_tweets(data) {
+for (i=0; i<data.length; i++) {
+document.getElementById("tweets").innerHTML =
+document.getElementById("tweets").innerHTML +
+'<a href="http://twitter.com/{TwitterUsername}/status/' +
+(data[i].id_str ? data[i].id_str : data[i].id) +
+'"><div class="content">' + data[i].text +
+'</div></a>';
+}
+document.getElementById("twitter").style.display = 'block';
+}
+</script>
+<script type="text/javascript" src="/tweets.js"></script>
+{/block:Twitter}
+{/block:IfTwitterFeed}
+
+{block:IfGoogleAnalytics}
+{block:IfGoogleAnalyticsID}
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '{GoogleAnalyticsID}']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+{/block:IfGoogleAnalyticsID}
+{/block:IfGoogleAnalytics}
+
+
+
+</body>
+</html>
