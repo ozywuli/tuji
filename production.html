@@ -42,9 +42,14 @@ Year: 2014
 <!-- Theme Options -->
 {block:Hidden}
 
-<meta name="if:Twitter Feed" content="0">
-<meta name="if:Google Analytics" content="0">
-<meta name="text:Google Analytics ID" content="">
+
+<meta name="if:Twitter Feed" content="0" />
+<meta name="if:Google Analytics" content="0" />
+<meta name="text:Google Analytics ID" content="" />
+
+
+<meta name="font:Body" content="Helvetica, Arial, sans-serif"/>
+
 {/block:Hidden}
 
 
@@ -63,14 +68,15 @@ box-sizing: border-box;
 }
 
 
-body {
-font-size: 62.5%;
-font-style: normal;
-font-weight: normal;
-height: 100%;
-line-height: 1.5;
-position: relative;
-cursor: default;
+html, body {
+  font-size: 62.5%;
+  font-style: normal;
+  font-weight: normal;
+  height: 100%;
+  line-height: 1.5;
+  position: relative;
+  cursor: default;
+  font-family: {font:Body};
 }
 
 a {
@@ -101,16 +107,16 @@ a {
   color: {AccentColor};
 }
 .page-header {
-background-color: #000;
-background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("http://static.tumblr.com/2a1a4fd95e6ec26e24196974d80996d0/v7diimu/Em7n2sttk/tumblr_static_mountain-crop.jpg");
-background-position: center center;
+  background-color: #000;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("http://static.tumblr.com/2a1a4fd95e6ec26e24196974d80996d0/v7diimu/Em7n2sttk/tumblr_static_mountain-crop.jpg");
+  background-position: center center;
   margin-bottom: 80px;
   padding: 20px;
 /*  background-image: url('{HeaderImage}');*/
   text-align: center;
 }
 .page-header__title {
-  font-size: 48px;
+  font-size: 6.1rem;
 }
 .page-header__link {
   color: {TitleColor};
@@ -121,8 +127,8 @@ background-position: center center;
 
 .toggle {
   position: fixed;
-  top: 30px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   display: block;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 100%;
@@ -182,11 +188,21 @@ background-position: center center;
 }
 
 
+.page-content {
+  font-size: 1.6rem;
+}
+
+
 .posts {
   max-width: 90%;
   margin: 0 auto;
   margin-bottom: 80px;
 }
+
+.post {
+  margin-bottom: 26px;
+}
+
 .post img {
   max-width: 100%;
 }
@@ -196,7 +212,7 @@ background-position: center center;
 
 
 .index-post-meta {
-  font-size: 14px;
+  font-size: 1.6rem;
 }
 
 
@@ -209,7 +225,7 @@ background-position: center center;
 }
 .index-post-meta__date {
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 16px;
 }
 .index-post-meta__notecount {
   display: inline-block;
@@ -237,6 +253,8 @@ background-position: center center;
 }
 .search-bar {
   position: relative;
+  margin-top: 41px;
+  margin-bottom: 26px;
 }
 .search-bar input[type="text"] {
   width: 100%;
@@ -246,7 +264,7 @@ background-position: center center;
   padding-left: 60px;
   background: none;
   color: #FFF;
-  font-size: 24px;
+  font-size: 26px;
   line-height: 1.6;
 }
 .search-bar input[type="submit"] {
@@ -265,6 +283,14 @@ background-position: center center;
   left: 16px;
   pointer-events: none;
 }
+
+
+.main-nav__menu {
+  font-size: 26px;
+}
+  .main-nav__menu a {
+    color: #FFF;
+  }
 
 </style>
 
@@ -323,13 +349,6 @@ background-position: center center;
   <nav class="main-nav">
 
 
-  <div class="clearfix main-nav__menu">
-    <a href="/archive">{lang:Archive}</a>
-    {block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
-    {block:HasPages}{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}{/block:HasPages}
-  </ul>
-
-
   <form class="search-bar" action="/search" method="get">
     <input type="text" placeholder="{lang:Search}" name="q" value="{SearchQuery}">
     <input type="submit" value="">
@@ -348,6 +367,16 @@ background-position: center center;
     </g>
 </svg>
   </form>
+
+
+  <div class="clearfix main-nav__menu">
+    <a href="/archive">{lang:Archive}</a>
+    {block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
+    {block:HasPages}{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}{/block:HasPages}
+  </div>
+
+
+
 
 
   </nav>
