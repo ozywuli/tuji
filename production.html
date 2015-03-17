@@ -49,6 +49,7 @@ Year: 2014
 
 
 <meta name="font:Body" content="Helvetica, Arial, sans-serif"/>
+<meta name="color:Hover Link" content="blue" />
 
 {/block:Hidden}
 
@@ -59,6 +60,12 @@ Year: 2014
 
 <!-- Reset -->
 <style>
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 *,
 *:before,
 *:after {
@@ -81,6 +88,13 @@ html, body {
 
 a {
   text-decoration: none;
+}
+a:hover {
+  color: {color:Hover Link;};
+}
+
+ul, li {
+  list-style: none;
 }
 
 /* Utilities */
@@ -212,11 +226,12 @@ a {
 
 
 .index-post-meta {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 
-.index-post-meta-row__one {
+.index-post-meta__row {
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -225,7 +240,7 @@ a {
 }
 .index-post-meta__date {
   display: inline-block;
-  margin-right: 16px;
+
 }
 .index-post-meta__notecount {
   display: inline-block;
@@ -240,12 +255,7 @@ a {
   margin: 0;
 }
 
-.pop {
-  float: right;
-}
-.share-menu {
-  display: none;
-}
+
 
 .main-nav {
   max-width: 80%;
@@ -280,17 +290,55 @@ a {
 .search-bar svg {
   position: absolute;
   top: 5px;
-  left: 16px;
+  left: 0;
   pointer-events: none;
 }
+
+
+.tags {
+  margin-bottom: 10px;
+  text-align: center;
+}
+  .tags a {
+    display: inline-block;
+  }
 
 
 .main-nav__menu {
   font-size: 26px;
 }
   .main-nav__menu a {
+    display: block;
     color: #FFF;
   }
+
+
+.caption {
+  text-align: left;
+}
+
+
+.sharing-and-saving {
+  text-align: center;
+}
+.sharing-and-saving li {
+  display: inline-block;
+  position: relative;
+}
+
+
+.share-menu {
+  display: none;
+  position: absolute;
+  width: 300px;
+  left: -150px;
+  top: -30px;
+  border: 1px solid #000;
+  background-color: #FFF;
+}
+  .share-menu a {
+    display: inline-block;
+  }a
 
 </style>
 
@@ -538,7 +586,7 @@ a {
       <!-- Date + Notecount -->
       <div class="index-post-meta clearfix">
 
-        <div class="index-post-meta-row__one">
+        <div class="index-post-meta__row">
           <a href="{Permalink}" class="index-post-meta__date">
             {block:Date}
               {block:NewDayDate}<p>{DayOfMonth} {Month} {Year}</p>{/block:NewDayDate}
@@ -546,6 +594,7 @@ a {
             {/block:Date}
           </a>
           <div class="index-post-meta__notecount">
+
             <span class="yes-notes">
                 <a href="{Permalink}">
                 {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
@@ -555,6 +604,37 @@ a {
                 <a href="{Permalink}">0 notes</a>
             </span>
           </div>
+        </div>
+
+        <div class="index-post-meta__row">
+          <ul class="sharing-and-saving">
+            <li>{LikeButton}</li>
+            <li>{ReblogButton}</li>
+            <li>
+
+                  <nav class="share-menu" id="share_{PostID}">
+                    <a href="#" class="share-item open-in-app" data-post="{PostID}">Open in app</a>
+                    <a href="http://facebook.com/sharer.php?u={URLEncodedPermalink}&amp;t={URLEncodedTitle}" class="share-item facebook" target="_blank">Facebook</a>
+                    <a href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}" class="share-item twitter" target="_blank">Tweet</a>
+                    <a href="mailto:?subject={URLEncodedShareString}&amp;body={URLEncodedMailSummary}" class="share-item mail">Mail</a>
+                  </nav>
+
+
+
+
+                <a href="#" class="share-button"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  width="20px" height="20px" viewBox="246 246 20 20" enable-background="new 246 246 20 20" xml:space="preserve">
+                  <g>
+                  <path d="M262.875,259.75c-0.883,0-1.679,0.366-2.246,0.954l-8.419-4.209c0.026-0.161,0.04-0.326,0.04-0.495
+                  s-0.014-0.333-0.04-0.495l8.419-4.209c0.567,0.587,1.363,0.954,2.246,0.954c1.726,0,3.125-1.399,3.125-3.125
+                  S264.601,246,262.875,246c-1.727,0-3.125,1.399-3.125,3.125c0,0.168,0.014,0.333,0.039,0.495l-8.418,4.209
+                  c-0.568-0.587-1.364-0.954-2.246-0.954c-1.726,0-3.125,1.399-3.125,3.125c0,1.726,1.399,3.125,3.125,3.125
+                  c0.882,0,1.678-0.366,2.246-0.954l8.418,4.209c-0.025,0.161-0.039,0.327-0.039,0.495c0,1.726,1.398,3.125,3.125,3.125
+                  c1.726,0,3.125-1.399,3.125-3.125S264.601,259.75,262.875,259.75z"/>
+                  </g>
+                              </svg></a>
+            </li>
+          </ul>
         </div>
 
       </div>
@@ -567,15 +647,7 @@ a {
 
       <!-- Share Controls -->
 
-      <div class="pop">
-          <a href="#" class="share selector icon-export"></a>
-          <nav class="share-menu" id="share_{PostID}">
-            <a href="#" class="share-item open-in-app" data-post="{PostID}">Open in app</a>
-            <a href="http://facebook.com/sharer.php?u={URLEncodedPermalink}&amp;t={URLEncodedTitle}" class="share-item facebook" target="_blank">Facebook</a>
-            <a href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}" class="share-item twitter" target="_blank">Tweet</a>
-            <a href="mailto:?subject={URLEncodedShareString}&amp;body={URLEncodedMailSummary}" class="share-item mail">Mail</a>
-          </nav>
-      </div>
+
 
 
 
@@ -699,6 +771,25 @@ a {
             $pageHeader.removeClass('blur');
           }
         });
+
+
+        var $shareButton = $('.share-button');
+        var $shareMenu = $('.share-menu');
+
+        $shareButton.on('click', function(e) {
+          e.preventDefault();
+
+
+            if ( $shareMenu.is(':hidden') ) {
+              $shareMenu.fadeIn();
+              console.log(1);
+              console.log($(this));
+            } else {
+              $shareMenu.fadeOut();
+            }
+
+        })
+
 
 
     });
