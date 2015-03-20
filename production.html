@@ -123,9 +123,10 @@ a {
 .page-header {
   background-color: #000;
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("http://static.tumblr.com/2a1a4fd95e6ec26e24196974d80996d0/v7diimu/Em7n2sttk/tumblr_static_mountain-crop.jpg");
-  background-position: center center;
+  background-position: center center;;
   margin-bottom: 80px;
   padding: 20px;
+  padding-top: 100px;
 /*  background-image: url('{HeaderImage}');*/
   text-align: center;
 }
@@ -138,16 +139,19 @@ a {
   font-weight: {TitleFontWeight}
 }
 
+.toggle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+}
 
 .toggle {
-  position: fixed;
-  top: 8px;
-  right: 8px;
   display: block;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 100%;
   padding: 12px;
-  z-index: 99999;
+
 }
 .bar {
   display: block;
@@ -171,6 +175,9 @@ a {
     transform: rotate(-45deg) translate3d(5px, -5px, 0px);
 }
 .toggled {
+  background: none;
+}
+.toggled-toggle-container {
   background: none;
 }
 
@@ -314,6 +321,8 @@ a {
 
 
 .caption {
+  max-width: 1080px;
+  margin: 0 auto;
   text-align: left;
 }
 
@@ -381,12 +390,13 @@ a {
 </header>
 
 
-
-<a href="#" class="toggle js-toggle">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</a>
+<div class="toggle-container">
+  <a href="#" class="toggle js-toggle">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </a>
+</div>
 
 
 
@@ -403,15 +413,11 @@ a {
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        width="32px" height="32px" viewBox="0 0 612.01 612.01" enable-background="new 0 0 612.01 612.01" xml:space="preserve">
     <g>
-      <g>
-        <g>
           <path fill="#FFFFFF" d="M606.209,578.714L448.198,423.228C489.576,378.3,515,318.8,515,253.393C514.98,113.4,399.7,0,257.5,0
             C115.282,0,0,113.4,0,253.393c0,139.993,115.276,253.4,257.5,253.393c61.444,0,117.801-21.253,162.068-56.586l158.624,156.099
             c7.729,7.601,20.3,7.601,28,0c7.745-7.599,7.708-19.999,0.008-27.585H606.209z M257.493,467.8
             c-120.326,0-217.869-95.993-217.869-214.407C39.624,134.979,137.167,39,257.5,38.986c120.327,0,217.9,96,217.9,214.4
             c0,118.4-97.581,214.414-217.9,214.414H257.493z"/>
-        </g>
-      </g>
     </g>
 </svg>
   </form>
@@ -755,20 +761,25 @@ a {
         var $pageHeader = $('.page-header');
 
 
+        // toggle menu on and off
         $toggle.on('click', function(e) {
           e.preventDefault();
+
+          // open nav menu
           if (!$navContainer.hasClass('revealed')) {
             $toggle.addClass('toggled');
             $navContainer.addClass('revealed').fadeIn();
             $pageContent.addClass('blur');
-            $pageHeader.addClass('blur')
+            $pageHeader.addClass('blur');
+            $('.toggle-container').addClass('toggled-toggle-container');
 
-
+          // close nav menu
           } else {
             $toggle.removeClass('toggled');
             $navContainer.removeClass('revealed').fadeOut();
             $pageContent.removeClass('blur');
             $pageHeader.removeClass('blur');
+            $('.toggle-container').removeClass('toggled-toggle-container');
           }
         });
 
