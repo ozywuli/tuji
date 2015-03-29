@@ -268,9 +268,14 @@ a {
   }
 
   .post img {
-    max-width: 100%;
+    width: 100%;
+    max-width: 1080px;
   }
 .photo {
+  text-align: center;
+}
+
+.photoset {
   text-align: center;
 }
 
@@ -432,16 +437,53 @@ background: none !important;
 .share-menu {
   display: none;
   position: absolute;
-  width: 300px;
-  left: -150px;
-  top: -30px;
+  left: -40px;
+  top: -152px;
+  width: 110px;
   border: 1px solid #000;
+  border-bottom: 3px solid #000;
   background-color: #FFF;
 }
-  .share-menu a {
-    display: inline-block;
-  }
 
+
+.share-menu:after, .share-menu:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.share-menu:after {
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #000000;
+  border-width: 8px;
+  margin-left: -8px;
+}
+.share-menu:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #000000;
+  border-width: 14px;
+  margin-left: -14px;
+}
+  .share-menu a {
+    display: block;
+    text-align: left;
+    padding: 4px 12px;
+  }
+  .share-menu a svg {
+    position:;
+    width: 20px;
+    height: 20px;
+  }
+  .share-menu a span {
+    padding-left: 5px;
+    line-height: 22px;
+    vertical-align: top;
+  }
 
 .post-pagination {
   max-width: 1080px;
@@ -859,7 +901,9 @@ background: none !important;
 
         {block:IfUsernameOnTwitter}
         <li>
-            <a href="http://www.twitter.com/{text:Username on Twitter}" id="wwitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          <a href="http://www.twitter.com/{text:Username on Twitter}" id="wwitter">
+
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
 <g>
   <path style="fill:#010002;" d="M8,0C3.582,0,0,3.582,0,8s3.582,8,8,8s8-3.582,8-8C16,3.581,12.418,0,8,0z M11.98,6.204l0.006,0.255
@@ -999,7 +1043,13 @@ background: none !important;
     <!-- Photo -->
     {block:Photo}
     <div class="photo post">
-    {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+    {block:IndexPage}
+    <a href="{Permalink}"><img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/></a>
+    {/block:IndexPage}
+
+    {block:PermalinkPage}
+        {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+    {/block:PermalinkPage}
     {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
     </div>
     {/block:Photo}
@@ -1010,7 +1060,15 @@ background: none !important;
     <div class="photoset post">
 
     {block:Photos}
-    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+
+    {block:IndexPage}
+    <a href="{Permalink}"><img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/></a>
+    {/block:IndexPage}
+
+    {block:PermalinkPage}
+        {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+    {/block:PermalinkPage}
+
     {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
     {/block:Photos}
     </div>
@@ -1122,10 +1180,220 @@ background: none !important;
             <li>
 
                   <nav class="share-menu" id="share_{PostID}">
-                    <a href="#" class="share-item open-in-app" data-post="{PostID}">Open in app</a>
-                    <a href="http://facebook.com/sharer.php?u={URLEncodedPermalink}&amp;t={URLEncodedTitle}" class="share-item facebook" target="_blank">Facebook</a>
-                    <a href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}" class="share-item twitter" target="_blank">Tweet</a>
-                    <a href="mailto:?subject={URLEncodedShareString}&amp;body={URLEncodedMailSummary}" class="share-item mail">Mail</a>
+                    <a href="http://facebook.com/sharer.php?u={URLEncodedPermalink}&amp;t={URLEncodedTitle}" class="share-item facebook" target="_blank">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;"
+   xml:space="preserve">
+<g>
+  <g>
+    <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826
+      C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845
+      v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z
+      "/>
+  </g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                    <span>Facebook</span>
+                    </a>
+
+                    <a href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}" class="share-item twitter" target="_blank">
+
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+<g>
+  <path style="fill:#010002;" d="M8,0C3.582,0,0,3.582,0,8s3.582,8,8,8s8-3.582,8-8C16,3.581,12.418,0,8,0z M11.98,6.204l0.006,0.255
+    c0,2.604-1.981,5.604-5.604,5.604c-1.112,0-2.147-0.326-3.019-0.885c0.154,0.018,0.311,0.028,0.47,0.028
+    c0.923,0,1.772-0.315,2.446-0.843c-0.862-0.016-1.589-0.586-1.84-1.368C4.56,9.018,4.682,9.029,4.81,9.029
+    c0.18,0,0.354-0.023,0.519-0.068c-0.901-0.182-1.58-0.977-1.58-1.931V7.005c0.266,0.148,0.569,0.236,0.892,0.247
+    C4.113,6.899,3.765,6.296,3.765,5.613c0-0.361,0.097-0.699,0.266-0.99c0.971,1.192,2.423,1.976,4.06,2.058
+    C8.057,6.537,8.04,6.386,8.04,6.232c0-1.087,0.882-1.969,1.97-1.969c0.566,0,1.078,0.239,1.438,0.622
+    c0.448-0.089,0.87-0.253,1.251-0.478c-0.147,0.46-0.459,0.846-0.866,1.09c0.397-0.047,0.778-0.154,1.131-0.31
+    C12.7,5.581,12.365,5.928,11.98,6.204z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+                      <span>Tweet</span>
+                    </a>
+
+
+
+                    <a href="https://plus.google.com/share?url={URLEncodedPermalink}}" class="share-item twitter" target="_blank">
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   width="97.75px" height="97.75px" viewBox="0 0 97.75 97.75" style="enable-background:new 0 0 97.75 97.75;" xml:space="preserve"
+  >
+<g>
+  <g>
+    <path d="M50.729,33.67c0-6.775-4.039-17.311-11.826-17.311c-2.448,0-5.071,1.222-6.577,3.105
+      c-1.598,1.979-2.062,4.511-2.062,6.965c0,6.3,3.658,16.741,11.736,16.741c2.345,0,4.872-1.123,6.382-2.63
+      C50.541,38.369,50.729,35.365,50.729,33.67z"/>
+    <path d="M45.657,58.414c-0.748-0.094-1.218-0.094-2.156-0.094c-0.847,0-5.918,0.185-9.859,1.511
+      c-2.064,0.748-8.071,3.008-8.071,9.687c0,6.682,6.478,11.485,16.522,11.485c9.015,0,13.804-4.338,13.804-10.163
+      C55.896,66.027,52.798,63.496,45.657,58.414z"/>
+    <path d="M48.875,0C21.882,0,0,21.882,0,48.875S21.882,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.868,0,48.875,0z
+       M37.489,84.945c-13.616,0-20.184-6.488-20.184-13.455c0-3.385,1.687-8.18,7.227-11.475c5.818-3.576,13.709-4.043,17.936-4.334
+      c-1.319-1.692-2.816-3.479-2.816-6.395c0-1.597,0.47-2.539,0.934-3.669c-1.034,0.096-2.062,0.188-3.002,0.188
+      c-9.948,0-15.581-7.438-15.581-14.775c0-4.322,1.969-9.124,6.005-12.605c5.354-4.422,12.67-5.622,17.744-5.622H64.25l-6.105,3.836
+      h-5.816c2.158,1.786,6.658,5.549,6.658,12.703c0,6.957-3.938,10.259-7.879,13.36c-1.223,1.221-2.632,2.538-2.632,4.611
+      c0,2.065,1.41,3.193,2.44,4.047l3.383,2.628c4.132,3.479,7.888,6.679,7.886,13.177C62.184,76.012,53.635,84.945,37.489,84.945z
+       M78.005,47.725v9.464h-4.646v-9.464h-9.393v-4.697h9.393v-9.406h4.646v9.406h9.438v4.697H78.005z"/>
+  </g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+                      <span>Google+</span>
+                    </a>
+
+
+
+                    <a href="mailto:?subject={URLEncodedShareString}&amp;body={URLEncodedMailSummary}" class="share-item mail">
+
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+<g>
+  <g>
+    <path style="fill:#010002;" d="M306,612c-28.152,0-55.284-3.672-81.396-11.016c-26.112-7.347-50.49-17.646-73.134-30.906
+      s-43.248-29.172-61.812-47.736c-18.564-18.562-34.476-39.168-47.736-61.812c-13.26-22.646-23.562-47.022-30.906-73.135
+      C3.672,361.284,0,334.152,0,306s3.672-55.284,11.016-81.396s17.646-50.49,30.906-73.134s29.172-43.248,47.736-61.812
+      s39.168-34.476,61.812-47.736s47.022-23.562,73.134-30.906S277.848,0,306,0c42.024,0,81.702,8.058,119.034,24.174
+      s69.768,37.944,97.308,65.484s49.368,59.976,65.484,97.308S612,263.976,612,306c0,28.152-3.672,55.284-11.016,81.396
+      c-7.347,26.109-17.646,50.487-30.906,73.134c-13.26,22.644-29.172,43.248-47.736,61.812
+      c-18.562,18.564-39.168,34.479-61.812,47.736c-22.646,13.26-47.022,23.562-73.136,30.906C361.284,608.328,334.152,612,306,612z
+       M453.492,179.928H163.404c-2.856,0-5.304,0.918-7.344,2.754s-3.06,4.386-3.06,7.65v32.436c0,1.632,0.612,2.448,1.836,2.448
+      l152.388,86.904l1.227,0.612c0.813,0,1.428-0.204,1.836-0.612l147.492-86.904c0.813-0.408,1.428-0.612,1.836-0.612
+      c0.405,0,1.02-0.204,1.836-0.612c1.632,0,2.448-0.816,2.448-2.448v-31.212c0-3.264-1.021-5.814-3.063-7.65
+      S456.348,179.928,453.492,179.928z M245.412,310.284c0.408-0.408,0.612-1.021,0.612-1.836c0-1.227-0.408-1.836-1.224-1.836
+      l-87.516-50.185c-1.224-0.408-2.244-0.408-3.06,0c-0.816,0-1.224,0.612-1.224,1.836v131.58c0,1.227,0.612,2.04,1.836,2.448h1.224
+      c0.816,0,1.224-0.204,1.224-0.612L245.412,310.284z M351.9,320.076c-0.408-1.227-1.431-1.428-3.063-0.612l-33.66,19.584
+      c-4.08,2.448-8.361,2.448-12.852,0l-29.376-16.521c-1.224-0.816-2.244-0.816-3.06,0l-111.996,104.04
+      c-0.408,0.405-0.612,1.224-0.612,2.445c0,0.408,0.408,1.021,1.224,1.836c2.448,0.816,4.08,1.227,4.896,1.227H450.43
+      c0.816,0,1.635-0.408,2.448-1.227c0-1.632-0.204-2.649-0.612-3.06L351.9,320.076z M462.06,253.98h-2.445l-83.232,49.572
+      c-0.813,0-1.224,0.612-1.224,1.836c-0.408,0.408-0.204,1.02,0.609,1.833L459,397.188c0.816,0.816,1.428,1.227,1.836,1.227h1.224
+      c1.227-1.227,1.839-2.04,1.839-2.448V256.429C463.896,255.612,463.284,254.796,462.06,253.98z"/>
+  </g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                      <span>Mail</span>
+                    </a>
                   </nav>
 
 
@@ -1298,18 +1566,15 @@ background: none !important;
 
 
             if ( $shareMenu.is(':hidden') ) {
-              $shareMenu.fadeIn();
-              console.log(1);
-              console.log($(this));
-            } else {
-              $shareMenu.fadeOut();
+              $(this).siblings('.share-menu').fadeToggle(100);
+
             }
 
         })
 
 
 
-
+// Fade menu in/out on scroll
 var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
 
 $('body').on(mousewheelevt, function(e) {
@@ -1336,9 +1601,18 @@ $('body').on(mousewheelevt, function(e) {
 });
 
 
+// Check if the image is taller than its width. If so, then set the width to auto so that the img is no longer 100% the width of its container
 
 
-    });
+$('.post img').each(function() {
+  if ( $(this).height() > $(this).width() ) {
+    $(this).css('width', 'auto');
+  }
+})
+
+
+
+    }); // end DOM ready
 </script>
 
 
