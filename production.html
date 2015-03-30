@@ -11,7 +11,7 @@ __  __
 Theme by: ozywuli.com
 Name: Tuji
 Version: 1.0
-Year: 2014
+Year: 2015
 
 ********************************
 
@@ -47,9 +47,10 @@ Year: 2014
 <!-- Header -->
 <meta name="if:Masthead" content="1">
 <meta name="if:Avatar" content="1">
+<meta name="color:Title" content="#FFFFFF">
+
 
 <!-- Social -->
-<meta name="if:Twitter Feed" content="0" />
 <meta name="if:Google Analytics" content="0" />
 <meta name="text:Google Analytics ID" content="" />
 
@@ -68,7 +69,7 @@ Year: 2014
 
 <meta name="font:Body" content="Helvetica, Arial, sans-serif"/>
 <meta name="color:Background" content="#FFFFFF" />
-<meta name="color:Hover Link" content="blue" />
+<meta name="color:Hover" content="#529ECC" />
 
 {/block:Hidden}
 
@@ -108,9 +109,10 @@ html, body {
 a {
   text-decoration: none;
   transition: all 150ms ease 0s;
+  color: {AccentColor};
 }
 a:hover {
-  color: {color:Hover Link;};
+  color: {color:Hover};
 }
 
 ul, li {
@@ -139,38 +141,49 @@ clear: both;
 
 <!-- Theme CSS -->
 <style>
+
+/* Defaults */
+
 body {
   background-color: {BackgroundColor};
 }
 a {
   color: {AccentColor};
 }
+
+
+
+/* Masthead */
 .page-header {
   height: 100%;
   background-color: #000;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("http://static.tumblr.com/2a1a4fd95e6ec26e24196974d80996d0/v7diimu/Em7n2sttk/tumblr_static_mountain-crop.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("{HeaderImage}");
   background-position: center center;
   background-repeat: no-repeat;
   padding: 20px;
   padding-top: 100px;
-/*  background-image: url('{HeaderImage}');*/
   text-align: center;
 }
 
 @media all and (min-width: 600px) {
   .page-header {
-    height: auto;
+    height: 450px;
   }
 }
 
 .page-header__title {
   font-size: 6.1rem;
+  color: {color:Title};
 }
 .page-header__link {
   color: {TitleColor};
   font-family: {TitleFont};
-  font-weight: {TitleFontWeight}
+  font-weight: {TitleFontWeight};
 }
+
+
+
+/* Nav */
 
 .toggle-container {
   position: fixed;
@@ -184,8 +197,8 @@ a {
 .toggle {
   display: block;
   padding: 12px;
-
 }
+
 .bar {
   display: block;
   width: 20px;
@@ -218,8 +231,11 @@ a {
 .bar:nth-child(3) {
   margin-bottom: 0;
 }
+.toggle:hover .bar {
+  background: {color:Hover};
+}
 .toggled:hover .bar {
-  background: blue;
+  background: {color:Hover};
 }
 
 
@@ -242,16 +258,29 @@ a {
   filter: blur(2px);
 }
 
+.description {
+  color: #FFF;
+  font-size: 24px;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+
+
+
+
+
+/* Posts */
+
 
 .result {
   max-width: 500px;
 }
 
 .page-content {
-  margin: 100px 20px;
+  margin: 100px 20px 0 20px;
   font-size: 1.6rem;
 }
-
 
 .posts {
   max-width: 90%;
@@ -264,6 +293,7 @@ a {
 }
 
   .post p {
+    margin-top: 10px;
     margin-bottom: 21px;
   }
 
@@ -292,6 +322,19 @@ a {
   .quote .source {
     font-size: 16px;
   }
+
+
+.video iframe {
+  display: block;
+  width: 100%;
+  max-width: 1080px;
+  height: 607px;
+  margin: 0 auto;
+}
+
+
+
+
 
 .index-post-meta {
   font-size: 1.2rem;
@@ -383,6 +426,9 @@ a {
 .sm-nav svg path {
   fill: #FFF !important;
 }
+.sm-nav a:hover svg path {
+  fill: {color:Hover} !important;
+}
 
 .tags {
   margin-bottom: 10px;
@@ -401,12 +447,20 @@ a {
     display: block;
     color: #FFF;
   }
+  .main-nav__menu a:hover {
+    color: {color:Hover};
+  }
 
 
 .caption {
   max-width: 540px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
+}
+blockquote {
+  border-left: 3px solid #CCC;
+  padding-left: 10px;
+  text-align: left;
 }
 
 
@@ -485,6 +539,24 @@ background: none !important;
     vertical-align: top;
   }
 
+
+.page-pagination {
+  text-align: center;
+  font-size: 40px;
+}
+  .page-pagination li {
+    display: inline-block;
+  }
+  .page-pagination a {
+    line-height: 1;
+    padding: 3px 4px 80px;
+    color: {AccentColor};
+  }
+  .page-pagination a:hover {
+    background: {color:Hover};
+    color: #FFF;
+  }
+
 .post-pagination {
   max-width: 1080px;
   margin: 0 auto;
@@ -500,10 +572,17 @@ background: none !important;
     padding: 4px 12px;
   }
   .post-pagination a:hover {
-    background-color: ;
-    border: ;
-    color: ;
+    background-color: {color:Hover};
+    border: {color:Hover};
+    color: #FFF;
   }
+
+.page-pagination__prev {
+  margin-right: 40px;
+}
+.page-pagination__next {
+  margin-left: 40px;
+}
 
 .yes-notes {
   display: none;
@@ -576,10 +655,7 @@ background: none !important;
   </h1>
   {/block:ShowTitle}
 
-  <!-- Description -->
-  {block:ShowDescription}
-  <div class="page-header__description">{Description}</div>
-  {/block:ShowDescription}
+
 
 
 </header>
@@ -954,6 +1030,11 @@ background: none !important;
     </ul>
   {/block:IfSocialMediaIcons}
 
+
+  <!-- Description -->
+  {block:ShowDescription}
+  <div class="description">{Description}</div>
+  {/block:ShowDescription}
 
 
   </nav>
@@ -1463,14 +1544,25 @@ background: none !important;
     {block:Pagination}
     <div class="page-pagination">
     <ul>
-    {block:PreviousPage}<li><a class="page-pagination__prev" href="{PreviousPage}">{lang:Previous}</a></li>{/block:PreviousPage}
+    {block:PreviousPage}
+      <li>
+        <a class="page-pagination__prev" href="{PreviousPage}">
+          &rang;
+        </a>
+      </li>
+    {/block:PreviousPage}
 
     {block:JumpPagination length="5"}
     {block:CurrentPage}<li><span class="page-pagination__current">{PageNumber}</span></li>{/block:CurrentPage}
     {block:JumpPage}<li><a class="page-pagination__jump" href="{URL}">{PageNumber}</a></li>{/block:JumpPage}
     {/block:JumpPagination}
 
-    {block:NextPage}<li><a class="page-pagination__next" href="{NextPage}">{lang:Next}</a></li>{/block:NextPage}
+    {block:NextPage}
+    <li>
+      <a class="page-pagination__next" href="{NextPage}">
+        &rang;
+      </a>
+    </li>{/block:NextPage}
     </ul>
     </div>
     {/block:Pagination}
